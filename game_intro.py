@@ -20,24 +20,27 @@ window = Tk()
 window.wm_title("The Game of Life")
 window.minsize(width=780, height=670)
 window.maxsize(width=780, height=670)
+window.config(bg="#0033cc")
 
-w = Canvas(window, width=780, height=670, bg ="#0033cc")
-w.pack()
 
-topLab = Label(text="The Game of Life", bg="#0033cc", fg="white", font='Helvetica 44 bold')
+topLab = Label(window, text="The Game of Life", bg="#0033cc", fg="white", font='Helvetica 44 bold')
 topLab.pack()
 topLab.place(x=135,y=55)
 
-unEntry = Entry(w, width=10, font='Helvetica 20')
-unEntry.place()
-unEntry.pack(x=200,y=60)
+unLab = Label(window, text="Username:", bg="#0033cc", fg="white", font='Helvetica 20')
+unLab.pack()
+unLab.place(x=150,y=200)
 
-hostButton = Button(w, width=10, height=1, text="Host", command=host, font='Helvetica 40 bold')
+unEntry = Entry(window, font='Helvetica 20')
+unEntry.pack()
+unEntry.place(x=300,y=200)
+
+hostButton = Button(window, width=10, height=1, text="Host", command=host, font='Helvetica 40 bold')
 hostButton.pack()
 hostButton.place(x=210,y=300)
 
-clientButton = Button(w, width=10, height=1, text="Client", command=client, font='Helvetica 40 bold')
+clientButton = Button(window, width=10, height=1, text="Client", command=client, font='Helvetica 40 bold')
 clientButton.pack()
 clientButton.place(x=210,y=450)
 
-w.mainloop()
+window.mainloop()
