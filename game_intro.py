@@ -32,23 +32,24 @@ def clientStart(hostIp):
     port = 12221
     s = socket.socket()
     s.connect((hostIp, port))
-    print('Connected to', host)
+    print('Connected to', hostIp)
 
 def client():
     top = Toplevel()
-    top.title("Host")
+    top.title("Client")
     top.minsize(width=350, height=250)
     msg = Label(top, text="Please enter the host IP address")
     msg.pack()
 
-
-
-    buttond = Button(top, text="ddds", command=lambda: clientStart("10.0.0.198"))
+    entry = Entry(top, font='Helvetica 20')
+    entry.pack()
+    
+    buttond = Button(top, text="Connect", command=lambda: clientStart(entry.get()))
     buttond.pack()
-
 
     button = Button(top, text="Dismiss", command=top.destroy)
     button.pack()
+
 
 window = Tk()
 window.wm_title("The Game of Life")
