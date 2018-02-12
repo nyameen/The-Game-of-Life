@@ -7,14 +7,48 @@ def host():
     top = Toplevel()
     top.title("Host")
     top.minsize(width=350, height=250)
-    msg = Label(top, text="You are hosting a game.")
+
+    msg = Label(top, text="Waiting for connection...")
     msg.pack()
+
+    button = Button(top, text="Start", command=hostStart)
+    button.pack()
+
+def hostStart():
+    s = socket.socket()
+    host = socket.gethostname()
+    port = 12221
+    s.bind((host, port))
+
+    s.listen(5)
+    c = None
+
+    print ('[Waiting for connection...]')
+    c, addr = s.accept()
+    print ('Got connection from', addr)
+
+
+def clientStart(hostIp):
+    port = 12221
+    s = socket.socket()
+    s.connect((hostIp, port))
+    print('Connected to', host)
+
+def client():
+    top = Toplevel()
+    top.title("Host")
+    top.minsize(width=350, height=250)
+    msg = Label(top, text="Please enter the host IP address")
+    msg.pack()
+
+
+
+    buttond = Button(top, text="ddds", command=lambda: clientStart("10.0.0.198"))
+    buttond.pack()
+
 
     button = Button(top, text="Dismiss", command=top.destroy)
     button.pack()
-
-def client():
-    pass;
 
 window = Tk()
 window.wm_title("The Game of Life")
