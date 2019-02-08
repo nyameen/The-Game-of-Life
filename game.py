@@ -7,7 +7,6 @@ global turn
 turn = 1
 
 # Make new tkinter oage for connect/host screen
-# test commit
 
 def hitMiss():
     c.send(("<ack>1</ack>").encode())
